@@ -1,1 +1,1 @@
-# RunningGame
+# IMD Final Group Project
