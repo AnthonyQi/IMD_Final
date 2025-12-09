@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "playerActions",
+    "maps": [
+        {
+            "name": "player",
+            "id": "85e50135-c2a7-44dd-892e-14c6a6103a55",
+            "actions": [
+                {
+                    "name": "speedBoost",
+                    "type": "Button",
+                    "id": "8aa9dd5c-e2c0-48be-93bc-29ae740575fb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a8bb90ba-d68c-4747-ac40-ff977174af83",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "speedBoost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
