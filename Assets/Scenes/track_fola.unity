@@ -266,10 +266,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 291406309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42b4531c30425654b8ab718110cdbc45, type: 3}
+  m_Script: {fileID: 11500000, guid: 38374989a08365740b1fb5b6a1c41ef4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::playerJump
-  speed: 1
+  m_EditorClassIdentifier: Assembly-CSharp::playerMovement
+  baseSpeed: 5
 --- !u!1 &344138257
 GameObject:
   m_ObjectHideFlags: 0
