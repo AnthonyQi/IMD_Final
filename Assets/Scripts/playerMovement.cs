@@ -14,6 +14,9 @@ public class playerMovement : MonoBehaviour
     private float greatGreenEnd = 1.79f;
     private float goodGreenStart = 1.8f;
     private float goodGreenEnd = 2.55f;
+    /*private float greenCooldown = 2f;
+    private float greenWait = 0f;
+    private bool canClick = true;*/
 
     private Vector3 moveDirection;
 
@@ -37,12 +40,27 @@ public class playerMovement : MonoBehaviour
             greenTimer = 0f;
         }
 
+        /*greenWait += Time.deltaTime;
+        if (greenWait >= greenCooldown)
+        {
+            greenWait = 0f;
+        }
+
+        if (greenWait > 0f)
+        {
+            canClick = false;
+        }
+        else
+        {
+            canClick = true;
+        }*/
+
     }
 
     public void Green(InputAction.CallbackContext context)
     {
         float greened = greenTimer;
-        if (context.performed)
+        if (context.performed)/*&& canClick*/
         {
             if (greened >= greatGreenStart && greened <= greatGreenEnd)
             {
@@ -52,6 +70,7 @@ public class playerMovement : MonoBehaviour
             {
                 GoodGreen();
             }
+
         }
     }
 
