@@ -1,12 +1,14 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
     public float baseSpeed = 5f;
-    private float maxSpeedBoost = 2.5f;
-    private float normalSpeedBoost = 1f;
+    private float maxSpeedBoost = 1.5f;
+    private float normalSpeedBoost = 0.75f;
 
     private float greenTimer = 0f;
     private float greenDuration = 3f;
@@ -15,34 +17,46 @@ public class playerMovement : MonoBehaviour
     private float goodGreenStart = 1.8f;
     private float goodGreenEnd = 2.55f;
 
+    private bool isStopped;
+
     private Vector3 moveDirection;
 
     private CharacterController cc;
-    private Vector3 startingPos = new Vector3(-19.8f, 0.02f, 53.09f);
+    private Vector3 startingPos = new Vector3(-18.48f, -0.017f, 53.09f);
 
     public void Start()
     {
         transform.position = startingPos;
+        isStopped = false;
         cc = GetComponent<CharacterController>();
     }
 
+    public void StopMovement()
+    {
+        isStopped = true;
+        baseSpeed = 0f;
+    }
+
+
     public void Update()
     {
-        moveDirection = transform.forward * baseSpeed;
-        cc.Move(moveDirection * Time.deltaTime);
-
-        greenTimer += Time.deltaTime;
-        if (greenTimer > greenDuration)
+        if (isStopped) return;
         {
-            greenTimer = 0f;
-        }
+            moveDirection = transform.forward * baseSpeed;
+            cc.Move(moveDirection * Time.deltaTime);
 
+            greenTimer += Time.deltaTime;
+            if (greenTimer > greenDuration)
+            {
+                greenTimer = 0f;
+            }
+        }
     }
 
     public void Green(InputAction.CallbackContext context)
     {
         float greened = greenTimer;
-        if (context.performed)
+        if (context.performed && baseSpeed < 8)
         {
             if (greened >= greatGreenStart && greened <= greatGreenEnd)
             {
@@ -57,12 +71,12 @@ public class playerMovement : MonoBehaviour
 
     private void GreatGreen()
     {
-        StartCoroutine(TemporarySpeedBoost(maxSpeedBoost, 2f));
+        StartCoroutine(TemporarySpeedBoost(maxSpeedBoost, 1.5f));
     }
 
     private void GoodGreen()
     {
-        StartCoroutine(TemporarySpeedBoost(normalSpeedBoost, 1.5f));
+        StartCoroutine(TemporarySpeedBoost(normalSpeedBoost, 0.85f));
     }
 
     private IEnumerator TemporarySpeedBoost(float boost, float duration)
