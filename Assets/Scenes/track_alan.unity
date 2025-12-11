@@ -1516,6 +1516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: character (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9d3c5522dc47b6c42b4a3a4247a0b97a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2044,17 +2048,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LongJump
   maxSpeed: 13
-  speedPerPress: 0.5
-  deceleration: 3.5
+  speedPerPress: 0.4
+  deceleration: 5
   jumpHeight: 2
   gravity: -9.81
   animator: {fileID: 2137727230}
-  messageText: {fileID: 0}
+  messageText: {fileID: 2018445247}
   attemptsText: {fileID: 1223453053}
   distanceText: {fileID: 1487992307}
   inputPromptText: {fileID: 248641359}
-  messageDuration: 3
-  startPosition: {fileID: 0}
   faultLineTransform: {fileID: 1337423501}
   maxAttempts: 3
   distanceScale: 1.625

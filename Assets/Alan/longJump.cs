@@ -119,10 +119,11 @@ public class LongJump : MonoBehaviour
 
     if (Input.GetKeyDown(KeyCode.Space) && controller.isGrounded && currentSpeed > 0 && !isJumping)
     {
+        animator.SetBool("isJump", true);
+
         velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         isJumping = true;
-        animator.SetBool("isJump", true);
-        
+        animator.Update(0f);
         takeoffPosition = transform.position;
         hasRecordedTakeoff = true;
         
@@ -216,11 +217,7 @@ public class LongJump : MonoBehaviour
 
     float CalculateDistanceFromFaultLine(Vector3 position)
     {
-        if (faultLineTransform == null)
-        {
-            Debug.LogWarning("Fault Line Transform not assigned!");
-            return 0f;
-        }
+        
 
         Vector3 faultLinePos = new Vector3(faultLineTransform.position.x, 0, faultLineTransform.position.z);
         Vector3 checkPos = new Vector3(position.x, 0, position.z);
@@ -242,12 +239,7 @@ public class LongJump : MonoBehaviour
 
     void CalculateJumpDistance()
     {
-        if (faultLineTransform == null)
-        {
-            Debug.LogError("Cannot calculate distance - Fault Line Transform not assigned!");
-            return;
-        }
-
+        
         Vector3 landingPosition = transform.position;
         currentJumpDistance = CalculateDistanceFromFaultLine(landingPosition);
 
@@ -259,7 +251,7 @@ public class LongJump : MonoBehaviour
         float displayCurrent = currentJumpDistance * distanceScale;
         float displayBest = bestJumpDistance * distanceScale;
 
-        Debug.Log($"Jump Distance: {displayCurrent:F2}ft | Best: {displayBest:F2}ft");
+        // Debug.Log($"Jump Distance: {displayCurrent:F2}ft | Best: {displayBest:F2}ft");
         
         if (distanceText != null)
         {
@@ -272,7 +264,7 @@ public class LongJump : MonoBehaviour
     {
         if (hit.collider.CompareTag("FaultLine") && !isFaulted)
         {
-            Debug.Log("FAULT! Hit the FaultLine!");
+            // Debug.Log("FAULT! Hit the FaultLine!");
             TriggerFault();
         }
     }
@@ -339,7 +331,7 @@ public class LongJump : MonoBehaviour
         {
             if (attemptsRemaining > 0)
             {
-                messageText.text = $"Distance: {displayCurrent:F2}ft | Best: {displayBest:F2}ft\nAttempts remaining: {attemptsRemaining}\nPress R for next attempt";
+                messageText.text = $"\nAttempts remaining: {attemptsRemaining}\nPress R for next attempt";
             }
             else
             {
@@ -369,7 +361,7 @@ public class LongJump : MonoBehaviour
     {
         if (attemptsRemaining <= 0)
         {
-            Debug.Log("No attempts remaining! Restarting game...");
+            // Debug.Log("No attempts remaining! Restarting game...");
             RestartGame();
             return;
         }
@@ -395,7 +387,7 @@ public class LongJump : MonoBehaviour
         HideFaultMessage();
         UpdateInputPrompt(); 
         
-        Debug.Log($"Ready for attempt {maxAttempts - attemptsRemaining + 1}");
+        // Debug.Log($"Ready for attempt {maxAttempts - attemptsRemaining + 1}");
     }
 
     public void RestartGame()
@@ -430,6 +422,6 @@ public class LongJump : MonoBehaviour
             distanceText.gameObject.SetActive(false);
         }
         
-        Debug.Log("Game restarted! Starting fresh with 3 attempts.");
+        // Debug.Log("Game restarted! Starting fresh with 3 attempts.");
     }
 }
