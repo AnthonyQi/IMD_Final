@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 71efb703adaca41c59d8513d26ac31dd
   - enabled: 1
-    path: Assets/Scenes/Race.unity
+    path: Assets/Scenes/TrackGame.unity
     guid: a0fbef5d555ed42be98f1e4ee5871140
     path: Assets/Scenes/CutScene1.unity
     guid: 7b76457b3db4593478f4270fe432f4d0
