@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EndOfRace : MonoBehaviour
 {
@@ -36,7 +35,6 @@ public class EndOfRace : MonoBehaviour
             Display();
             GetComponent<playerMovement>().StopMovement();
             anim.enabled = false;
-            SceneManager.LoadScene("Long Jump");
         }
     }
 
