@@ -56,7 +56,7 @@ public class playerMovement : MonoBehaviour
     public void Green(InputAction.CallbackContext context)
     {
         float greened = greenTimer;
-        if (context.performed && baseSpeed == 8)
+        if (context.performed && baseSpeed <= 8f)
         {
             if (greened >= greatGreenStart && greened <= greatGreenEnd)
             {
